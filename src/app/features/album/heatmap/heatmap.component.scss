@@ -43,8 +43,8 @@
   }
 
   &.premium {
-    border: 1.5px solid #f59e0b;
-    box-shadow: 0 0 6px rgba(245,158,11,.3);
+    border: 1.5px solid #21aef4;
+    box-shadow: 0 0 6px rgba(33, 174, 244, .3);
   }
 
   .celda-codigo {
@@ -81,7 +81,7 @@
   .tooltip-nombre { color: #e5e7eb; }
   .tooltip-tipo   { color: #9ca3af; font-size: 11px; }
   .tooltip-estado { font-weight: 600; margin-top: 4px; }
-  .tooltip-premium { font-size: 11px; color: #fbbf24; }
+  .tooltip-premium { font-size: 13px; color: #21aef4; }
 }
 
 .leyenda {
@@ -111,5 +111,5 @@
 
 .premium-dot {
   background: #D1D5DB;
-  border: 1.5px solid #f59e0b;
+  border: 1.5px solid #21aef4;
 }

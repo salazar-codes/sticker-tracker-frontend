@@ -1,0 +1,35 @@
+<!-- src/app/features/album/stats/stats.component.html -->
+<div class="stats-grid">
+
+  <div class="stat-card accent-green">
+    <span class="stat-value">{{ stats().tengo }}</span>
+    <span class="stat-label">Tengo</span>
+  </div>
+
+  <div class="stat-card accent-gray">
+    <span class="stat-value">{{ stats().falta }}</span>
+    <span class="stat-label">Faltan</span>
+  </div>
+
+  <div class="stat-card accent-yellow">
+    <span class="stat-value">{{ stats().repetidas }}</span>
+    <span class="stat-label">Repetidas</span>
+  </div>
+
+  <div class="stat-card accent-blue">
+    <span class="stat-value">{{ stats().porcentajeCompletado | number:'1.1-1' }}%</span>
+    <span class="stat-label">Completado</span>
+  </div>
+
+</div>
+
+<div class="progress-bar">
+  <div
+    class="progress-fill"
+    [style.width.%]="stats().porcentajeCompletado">
+  </div>
+</div>
+
+<p class="total-label">
+  {{ stats().totalEnColeccion }} de {{ stats().totalFiguritas }} figuritas
+</p>

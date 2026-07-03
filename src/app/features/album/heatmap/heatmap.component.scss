@@ -1,0 +1,115 @@
+// src/app/features/album/heatmap/heatmap.component.scss
+.heatmap-wrapper {
+  position: relative;
+}
+
+.seccion-block {
+  margin-bottom: 28px;
+}
+
+.seccion-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.celda {
+  width: 52px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .12s, box-shadow .12s;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    z-index: 10;
+  }
+
+  &.premium {
+    border: 1.5px solid #f59e0b;
+    box-shadow: 0 0 6px rgba(245,158,11,.3);
+  }
+
+  .celda-codigo {
+    font-size: 9px;
+    font-weight: 600;
+    font-family: 'Poppins', monospace;
+    letter-spacing: .02em;
+    pointer-events: none;
+    user-select: none;
+
+    // Color tenue según estado
+    color: rgba(0,0,0,.25);
+  }
+
+  &.tengo .celda-codigo    { color: rgba(255,255,255,.7); }
+  &.repetida .celda-codigo { color: rgba(0,0,0,.3); }
+  &.falta .celda-codigo    { color: rgba(0,0,0,.2); }
+}
+
+.tooltip {
+  position: fixed;
+  background: #1f2937;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 999;
+  min-width: 160px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+
+  p { margin: 3px 0; }
+  .tooltip-numero { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .tooltip-nombre { color: #e5e7eb; }
+  .tooltip-tipo   { color: #9ca3af; font-size: 11px; }
+  .tooltip-estado { font-weight: 600; margin-top: 4px; }
+  .tooltip-premium { font-size: 11px; color: #fbbf24; }
+}
+
+.leyenda {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.dot {
+  width: 14px;
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+.premium-dot {
+  background: #D1D5DB;
+  border: 1.5px solid #f59e0b;
+}

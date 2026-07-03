@@ -1,0 +1,44 @@
+// src/app/features/album/album.component.scss
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+header {
+  margin-bottom: 32px;
+
+  .back {
+    font-size: 13px;
+    color: #22C55E;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 12px;
+    &:hover { text-decoration: underline; }
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+}
+
+.loading {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 32px 0;
+}
+
+.heatmap-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+}

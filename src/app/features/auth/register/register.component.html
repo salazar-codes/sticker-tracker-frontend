@@ -1,0 +1,53 @@
+<!-- src/app/features/auth/register/register.component.html -->
+<div class="auth-container">
+  <h1 class="brand">Sticker Tracker</h1>
+  <h2>Crear cuenta</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Username</label>
+      <input
+        type="text"
+        placeholder="tu_usuario"
+        [(ngModel)]="username"
+        name="username"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="tu@email.com"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input
+        type="password"
+        placeholder="••••••••"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Creando cuenta...' : 'Registrarse' }}
+    </button>
+  </form>
+
+  <p class="footer">
+    ¿Ya tienes cuenta?
+    <a routerLink="/login">Inicia sesión</a>
+  </p>
+</div>

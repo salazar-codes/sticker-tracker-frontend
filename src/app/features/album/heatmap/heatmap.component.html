@@ -1,0 +1,58 @@
+<!-- src/app/features/album/heatmap/heatmap.component.html -->
+<div class="heatmap-wrapper">
+
+  @for (entry of seccionEntries(); track entry[0]) {
+    <div class="seccion-block">
+      <h3 class="seccion-label">{{ entry[0] }}</h3>
+      <div class="grid">
+        @for (fig of entry[1]; track fig.numero) {
+          <div
+            class="celda"
+            [class.premium]="fig.esPremium"
+            [class.tengo]="fig.estado === 'TENGO'"
+            [class.repetida]="fig.estado === 'REPETIDA'"
+            [class.falta]="fig.estado === 'FALTA'"
+            [style.background]="fig.colorHex"
+            (click)="onToggle(fig.numero)"
+            (mouseenter)="onHover(fig, $event)"
+            (mouseleave)="onLeave()">
+            <span class="celda-codigo">{{ fig.numero }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (figuitaHover()) {
+    <div
+      class="tooltip"
+      [style.left.px]="tooltipX()"
+      [style.top.px]="tooltipY()">
+      <p class="tooltip-numero">{{ figuitaHover()!.numero }}</p>
+      <p class="tooltip-nombre">{{ figuitaHover()!.nombreDisplay }}</p>
+      <p class="tooltip-tipo">{{ figuitaHover()!.tipo }}</p>
+      <p class="tooltip-estado" [style.color]="figuitaHover()!.colorHex">
+        {{ figuitaHover()!.estado }}
+      </p>
+      @if (figuitaHover()!.esPremium) {
+        <span class="tooltip-premium">⭐ Premium</span>
+      }
+    </div>
+  }
+
+</div>
+
+<div class="leyenda">
+  <span class="leyenda-item">
+    <span class="dot" style="background:#22C55E"></span> Tengo
+  </span>
+  <span class="leyenda-item">
+    <span class="dot" style="background:#D1D5DB"></span> Falta
+  </span>
+  <span class="leyenda-item">
+    <span class="dot" style="background:#EAB308"></span> Repetida
+  </span>
+  <span class="leyenda-item">
+    <span class="dot premium-dot"></span> Premium
+  </span>
+</div>

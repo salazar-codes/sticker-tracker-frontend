@@ -1,0 +1,25 @@
+<!-- src/app/features/album/album.component.html -->
+<div class="container">
+
+  <header>
+    <a class="back" routerLink="/colecciones">← Volver</a>
+    <h1>Mundial 2026 — Mi álbum</h1>
+  </header>
+
+  @if (loading()) {
+    <p class="loading">Cargando álbum...</p>
+  }
+
+  @if (!loading() && stats()) {
+    <app-stats [stats]="stats()!" />
+
+    <div class="divider"></div>
+
+    <h2 class="heatmap-title">Mapa de figuritas</h2>
+    <app-heatmap
+      [figuritas]="figuritas()"
+      (toggleFigurita)="onToggle($event)"
+    />
+  }
+
+</div>

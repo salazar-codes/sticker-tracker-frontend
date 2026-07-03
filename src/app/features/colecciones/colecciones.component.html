@@ -1,0 +1,33 @@
+<!-- src/app/features/colecciones/colecciones.component.html -->
+<div class="container">
+  <header>
+    <h1>Mis colecciones</h1>
+    <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+  </header>
+
+  @if (loading()) {
+    <p class="loading">Cargando colecciones...</p>
+  }
+
+  @if (!loading() && colecciones().length === 0) {
+    <p class="empty">No hay colecciones disponibles.</p>
+  }
+
+  <div class="grid">
+    @for (col of colecciones(); track col.id) {
+      <div class="card" (click)="abrir(col)">
+        <div class="card-header">
+          <h2>{{ col.nombre }}</h2>
+          <span [class]="col.activa ? 'badge-active' : 'badge-inactive'">
+            {{ col.activa ? 'Activa' : 'Inactiva' }}
+          </span>
+        </div>
+        <p class="temporada">Temporada {{ col.temporada }}</p>
+        <p class="total">
+          <span>{{ col.totalFiguritas }}</span> figuritas
+        </p>
+        <span class="cta">Ver álbum →</span>
+      </div>
+    }
+  </div>
+</div>

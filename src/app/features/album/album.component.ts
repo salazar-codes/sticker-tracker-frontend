@@ -18,12 +18,14 @@ import { COLOR_ESTADO, AlbumFigurita, EstadoFigurita } from '../../core/models/f
 export class AlbumComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private albumService = inject(AlbumService);
+  private bannerTimer: ReturnType<typeof setTimeout> | null = null;
 
   codigo = this.route.snapshot.paramMap.get('codigo')!;
 
   stats    = signal<AlbumStats | null>(null);
   figuritas = signal<AlbumFigurita[]>([]);
   loading  = signal(true);
+  ultimaTocada   = signal<AlbumFigurita | null>(null);
 
   ngOnInit() {
     this.cargarDatos();
@@ -46,7 +48,7 @@ export class AlbumComponent implements OnInit {
       error: () => this.loading.set(false)
     });
   }
-
+   
   onToggle(numero: string) {
     // Optimistic update
     this.figuritas.update(lista =>
@@ -65,6 +67,19 @@ export class AlbumComponent implements OnInit {
         };
       })
     );
+
+    // Setea banner con estado actualizado
+    const figActualizada = this.figuritas().find(f => f.numero === numero) ?? null;
+    this.ultimaTocada.set(figActualizada);
+
+    // ← Cancela el timer anterior antes de crear uno nuevo
+    if (this.bannerTimer) {
+      clearTimeout(this.bannerTimer);
+    }
+    this.bannerTimer = setTimeout(() => {
+      this.ultimaTocada.set(null);
+      this.bannerTimer = null;
+    }, 2000);
 
     // Persiste en backend
     this.albumService.toggle(this.codigo, numero).subscribe({

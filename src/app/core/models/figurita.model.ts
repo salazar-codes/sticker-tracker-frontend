@@ -31,6 +31,7 @@ export interface AlbumFigurita {
   esPremium: boolean;
   ordenEnSeccion: number;
   codigoSeccion: string;
+  nombreSeccion: string;
   codigoSeleccion: string | null;
   estadioNombre: string | null;
   estado: EstadoFigurita;

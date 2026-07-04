@@ -1,9 +1,8 @@
-<!-- src/app/features/album/heatmap/heatmap.component.html -->
 <div class="heatmap-wrapper">
 
   @for (entry of seccionEntries(); track entry[0]) {
     <div class="seccion-block">
-      <h3 class="seccion-label">{{ entry[0] }}</h3>
+      <h3 class="seccion-label">{{ entry[1][0].nombreSeccion }}</h3>
       <div class="grid">
         @for (fig of entry[1]; track fig.numero) {
           <div
@@ -13,7 +12,8 @@
             [class.repetida]="fig.estado === 'REPETIDA'"
             [class.falta]="fig.estado === 'FALTA'"
             [style.background]="fig.colorHex"
-            (click)="onToggle(fig.numero)"
+            (click)="onClick(fig)"
+            (touchend)="onTouchEnd(fig, $event)"
             (mouseenter)="onHover(fig, $event)"
             (mouseleave)="onLeave()">
             <span class="celda-codigo">{{ fig.numero }}</span>
@@ -23,7 +23,8 @@
     </div>
   }
 
-  @if (figuitaHover()) {
+  <!-- Tooltip desktop -->
+  @if (figuitaHover() && !isMobile()) {
     <div
       class="tooltip"
       [style.left.px]="tooltipX()"
@@ -35,24 +36,38 @@
         {{ figuitaHover()!.estado }}
       </p>
       @if (figuitaHover()!.esPremium) {
-        <span class="tooltip-premium">Figura especial</span>
+        <span class="tooltip-premium">⭐ Premium</span>
       }
     </div>
   }
 
 </div>
 
+<!-- Banner mobile — aparece al hacer tap -->
+@if (ultimaTocada() && isMobile()) {
+  <div class="mobile-banner">
+    <div class="mobile-banner-info">
+      <span class="mobile-banner-numero">{{ ultimaTocada()!.numero }}</span>
+      <span class="mobile-banner-nombre">{{ ultimaTocada()!.nombreDisplay }}</span>
+    </div>
+    <span class="mobile-banner-estado" [style.color]="ultimaTocada()!.colorHex">
+      {{ ultimaTocada()!.estado }}
+    </span>
+  </div>
+}
+
+<!-- Leyenda -->
 <div class="leyenda">
   <span class="leyenda-item">
     <span class="dot" style="background:#22C55E"></span> Tengo
   </span>
   <span class="leyenda-item">
-    <span class="dot" style="background:#D1D5DB"></span> Falta
+    <span class="dot" style="background:#E5E7EB"></span> Falta
   </span>
   <span class="leyenda-item">
     <span class="dot" style="background:#EAB308"></span> Repetida
   </span>
   <span class="leyenda-item">
-    <span class="dot premium-dot"></span> Figura especial
+    <span class="dot premium-dot"></span> Premium
   </span>
 </div>

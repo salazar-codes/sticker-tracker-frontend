@@ -8,7 +8,7 @@
 }
 
 .seccion-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: #9ca3af;
   text-transform: uppercase;
@@ -25,8 +25,8 @@
 }
 
 .celda {
-  width: 52px;
-  height: 32px;
+  width: 70px;
+  height: 38px;
   border-radius: 6px;
   cursor: pointer;
   border: 1px solid rgba(0,0,0,.08);
@@ -112,4 +112,47 @@
 .premium-dot {
   background: #D1D5DB;
   border: 1.5px solid #21aef4;
+}
+
+.mobile-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 16px;
+  right: 16px;
+  background: #1f2937;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  animation: slideUp .15s ease;
+
+  .mobile-banner-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-banner-numero {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .mobile-banner-nombre {
+    font-size: 12px;
+    color: #d1d5db;
+  }
+
+  .mobile-banner-estado {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }

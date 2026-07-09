@@ -117,3 +117,10 @@ export const environment = {
 | `touchend` en mobile | Más confiable que `touchstart` para acciones — no interfiere con scroll |
 | Optimistic update + rollback | UX instantánea sin esperar al backend |
 | `clearTimeout` en banner | Evita cierres prematuros al hacer taps rápidos |
+
+## Arquitectura de toda la solución
+![Arquitectura de la solución](public/sticker-tracker-arquitectura.webp)
+
+## Revisión de documento
+- _Versión: 1.0_
+- _Autor: Jimmy Salazar_

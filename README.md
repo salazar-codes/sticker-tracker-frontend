@@ -108,6 +108,15 @@ export const environment = {
 /album/:codigo → carga stats + 980 figuritas con estado del usuario
 ```
 
+## Screenshots de la aplicación
+![sticker-tracker-1](public/sticker-tracker-1.webp)
+![sticker-tracker-2](public/sticker-tracker-2.webp)
+![sticker-tracker-3](public/sticker-tracker-3.webp)
+![sticker-tracker-4](public/sticker-tracker-4.webp)
+![sticker-tracker-5](public/sticker-tracker-5.webp)
+<img src="public/sticker-tracker-6.webp" alt="sticker-tracker-6" width="45%"> <img src="public/sticker-tracker-7.webp" alt="sticker-tracker-7" width="45%">
+
+
 ## Decisiones técnicas
 
 | Decisión | Razón |
